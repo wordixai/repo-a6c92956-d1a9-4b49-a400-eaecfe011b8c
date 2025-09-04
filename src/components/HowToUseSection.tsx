@@ -15,7 +15,7 @@ const HowToUseSection = () => {
     {
       number: 3,
       title: "下载和分享",
-      description: "点击"生成"，等待不到一分钟。您的专业编辑图片已准备好下载并在任何地方使用！"
+      description: "点击\"生成\"，等待不到一分钟。您的专业编辑图片已准备好下载并在任何地方使用！"
     }
   ];
 
