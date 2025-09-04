@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Menu, X } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const menuItems = [
-    { label: 'Create', href: '#' },
+    { label: 'Create', href: '/' },
     { label: 'My Creations', href: '#' },
-    { label: 'Pricing', href: '#' },
+    { label: 'Pricing', href: '/pricing' },
     { label: 'Contact Us', href: '#' },
   ];
 
@@ -19,7 +21,7 @@ const Header = () => {
           <div className="flex items-center justify-between h-12">
             {/* Logo */}
             <div className="flex items-center z-10 h-full">
-              <a href="#" className="flex font-bold items-center">
+              <a href="/" className="flex font-bold items-center">
                 <span className="flex items-center">
                   <img 
                     src="https://nanobananaai.ai/logo.png" 
@@ -42,7 +44,11 @@ const Header = () => {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
+                    className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${
+                      location.pathname === item.href 
+                        ? 'text-white bg-white/10' 
+                        : 'text-white/70 hover:text-white hover:bg-white/10'
+                    }`}
                   >
                     {item.label}
                   </a>
@@ -117,7 +123,7 @@ const Header = () => {
         <div className={`absolute inset-0 bg-black/80 backdrop-blur-xl transition-opacity duration-500 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}></div>
         <div className={`absolute inset-x-0 top-0 bg-gradient-to-b from-black via-black/95 to-black/90 transition-all duration-500 transform ${isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
           <div className="flex items-center justify-between p-6 border-b border-white/10">
-            <a href="#" className="flex font-bold items-center">
+            <a href="/" className="flex font-bold items-center">
               <span className="flex items-center">
                 <img 
                   src="https://nanobananaai.ai/logo.png" 
